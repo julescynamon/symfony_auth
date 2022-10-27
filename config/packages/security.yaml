@@ -16,6 +16,15 @@ security:
         main:
             lazy: true
             provider: app_user_provider
+            login_throttling:
+                max_attempts: 3
+            form_login:
+                login_path: connexion
+                check_path: connexion
+                # csrf_token_generator: security.csrf.token_manager
+            logout: 
+                path: logout
+                
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -27,7 +36,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/profile, roles: ROLE_USER }
 
 when@test:
     security:

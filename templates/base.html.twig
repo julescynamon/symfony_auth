@@ -15,10 +15,12 @@
     </head>
     <body>
         <header style="display:flex;justify-content:space-between;align-items:center;background:#9b59b6;padding:15px;">
-            <span>Ma super APP</span>
+            <a href="{{ path('home') }}"><span>Ma super APP</span></a>
             <ul>
                 <a href="{{ path('inscription') }}">Inscription</a>
-                
+                <a href="{{ path('connexion') }}">Connexion</a>
+                <a href="{{ path('profile') }}">Profile</a>
+                <a href="{{ path('logout') }}">Déconnexion</a>
             </ul>
         </header>
         {% block body %}{% endblock %}

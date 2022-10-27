@@ -25,7 +25,7 @@ class SecurityController extends AbstractController
             $user->setPassword($passwordHasher->hashPassword($user, $user->getPassword()));
             $em->persist($user);
             $em->flush();
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('connexion');
         }
 
 
@@ -39,11 +39,20 @@ class SecurityController extends AbstractController
     {
 
         $error = $authenticationUtils->getLastAuthenticationError();
-        $userName = $authenticationUtils->getLastUsername();
+        $username = $authenticationUtils->getLastUsername();
+
+        // if ($error) {
+        //     dd($error->getMessageKey());
+        // }
 
         return $this->render('security/connexion.html.twig', [
             'error' => $error,
-            'userName' => $userName
+            'username' => $username
         ]);
+    }
+
+    #[Route('/logout', name: 'logout')]
+    public function logout()
+    {
     }
 }
