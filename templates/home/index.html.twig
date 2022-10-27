@@ -9,12 +9,12 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/julescynamon/Downloads/symfony_auth/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/julescynamon/Downloads/symfony_auth/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
+    
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <h1>Bonjour {{ app.user.name }}</h1>
+    {% else %}
+        <h1>Vous n'êtes pas connecté</h1>
+    {% endif %}
+    
 </div>
 {% endblock %}
