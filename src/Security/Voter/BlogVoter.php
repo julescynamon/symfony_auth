@@ -31,7 +31,9 @@ class BlogVoter extends Voter
         switch ($attribute) {
             case self::EDIT:
                 // logic to determine if the user can EDIT
-                // return true or false
+                if($subject->getAuthor() === $user) {
+                    return true;
+                }
                 break;
         }
 
